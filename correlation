@@ -1,3 +1,24 @@
+#修稿
+library("readxl")
+LOY_age_A<-read_excel(file.choose())
+library("ggplot2")
+library("ggpubr")
+x<-LOY_age_A$age
+y<-LOY_age_A$LOY_percentage
+stand_curve <- data.frame(x, y)
+ggplot(stand_curve, aes(x, y))+
+  geom_point() +
+  geom_smooth()
+
+ggplot(stand_curve, aes(x, y)) +
+  geom_point() +
+  stat_smooth(method = "lm", formula = y~x) +  
+  xlab("age/(years old))") +  
+  ylab(paste("LOY percentage"))
+
+ggscatter(LOY_age_A, x = "age", y = "LOY_percentage", add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",xlab = "age/(years old)", ylab = "LOY percentage")
+***********************************
 library("readxl")
 LOY_age_A<-read_excel(file.choose())
 library("ggplot2")
