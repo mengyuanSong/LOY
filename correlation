@@ -1,6 +1,9 @@
+
 #修稿
 library("readxl")
 LOY_age_A<-read_excel(file.choose())
+library("readr")
+LOY_age_A<-read.csv(file.choose())
 library("ggplot2")
 library("ggpubr")
 x<-LOY_age_A$age
